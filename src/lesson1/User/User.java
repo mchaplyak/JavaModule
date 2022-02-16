@@ -1,5 +1,7 @@
 package lesson1.User;
 
+import lesson1.User.Address.Address;
+
 import java.util.Objects;
 
 public class User {
@@ -10,11 +12,12 @@ public class User {
    private Address address;
    private String website;
    private String phone;
+   private Company company;
 
    public User() {
    }
 
-   public User(int id, String name, String username, String email, Address address, String website, String phone) {
+   public User(int id, String name, String username, String email, Address address, String website, String phone, Company company) {
       this.id = id;
       this.name = name;
       this.username = username;
@@ -22,6 +25,7 @@ public class User {
       this.address = address;
       this.website = website;
       this.phone = phone;
+      this.company = company;
    }
 
    @Override
@@ -34,6 +38,7 @@ public class User {
               ", address=" + address +
               ", website='" + website + '\'' +
               ", phone='" + phone + '\'' +
+              ", company=" + company +
               '}';
    }
 
@@ -93,16 +98,24 @@ public class User {
       this.phone = phone;
    }
 
+   public Company getCompany() {
+      return company;
+   }
+
+   public void setCompany(Company company) {
+      this.company = company;
+   }
+
    @Override
    public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
       User user = (User) o;
-      return id == user.id && Objects.equals(name, user.name) && Objects.equals(username, user.username) && Objects.equals(email, user.email) && Objects.equals(address, user.address) && Objects.equals(website, user.website) && Objects.equals(phone, user.phone);
+      return id == user.id && Objects.equals(name, user.name) && Objects.equals(username, user.username) && Objects.equals(email, user.email) && Objects.equals(address, user.address) && Objects.equals(website, user.website) && Objects.equals(phone, user.phone) && Objects.equals(company, user.company);
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(id, name, username, email, address, website, phone);
+      return Objects.hash(id, name, username, email, address, website, phone, company);
    }
 }
